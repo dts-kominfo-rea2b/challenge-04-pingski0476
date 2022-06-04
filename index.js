@@ -7,8 +7,22 @@ const dates = [
   "2020-02-03 UTC+7", // 1580662800 (epoch time, dalam detik)
 ];
 
+const mockDates = ["2022-01-01 UTC+7", "2021-12-31 00:00:00 UTC+2"];
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (data, index) => {
+  if (index != null){
+    let tgl = Date.parse(data[index])/1000;
+    return tgl.toString();
+  }
+  else {
+    
+    let tgl = data.map(function(e){
+      return Date.parse(e)/1000;
+    });
+    let sort = tgl.sort();
+    return sort.join('-');
+  }
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
@@ -18,7 +32,7 @@ const createDate = null;
   console.log(createDate?.(dates));
 
   // '1614841200' (dalam string)
-  console.log(createDate?.(dates, 2));
+  console.log(createDate?.(dates, 1));
 })();
 
 module.exports = {
